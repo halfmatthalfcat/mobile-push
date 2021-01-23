@@ -25,18 +25,18 @@ object GCMResponse {
 }
 
 case class GCMNotification(
-  title: Option[String],
-  body: Option[String],
-  subtitle: Option[String],
-  sound: Option[String],
-  badge: Option[String],
-  icon: Option[String],
-  click_action: Option[String],
-  body_loc_key: Option[String],
-  title_loc_key: Option[String],
-  android_channel_id: Option[String],
-  tag: Option[String],
-  color: Option[String]
+  title: Option[String] = None,
+  body: Option[String] = None,
+  subtitle: Option[String] = None,
+  sound: Option[String] = None,
+  badge: Option[String] = None,
+  icon: Option[String] = None,
+  click_action: Option[String] = None,
+  body_loc_key: Option[String] = None,
+  title_loc_key: Option[String] = None,
+  android_channel_id: Option[String] = None,
+  tag: Option[String] = None,
+  color: Option[String] = None
 )
 
 object GCMNotification {
@@ -69,7 +69,16 @@ case class GCMMessage(
   dryRun: Option[Boolean] = None
 ) {
   def toLetter(ids: Seq[GCMToken]) =
-    GCMLetter(ids, data, notification, expiresAfter, collapseKey, delayWhileIdle, restrictedPackageName, dryRun)
+    GCMLetter(
+      ids,
+      data,
+      notification,
+      expiresAfter,
+      collapseKey,
+      delayWhileIdle,
+      restrictedPackageName,
+      dryRun
+    )
 }
 
 object GCMMessage {
